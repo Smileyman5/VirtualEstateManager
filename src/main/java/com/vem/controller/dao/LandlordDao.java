@@ -1,6 +1,5 @@
 package com.vem.controller.dao;
 
-import com.vem.controller.model.Contract;
 import com.vem.controller.model.Landlord;
 
 import java.util.List;
@@ -13,5 +12,5 @@ public interface LandlordDao {
     public void edit(Landlord landlord);
     public void delete(Landlord landlord);
     public Landlord getLandlord(int landlordId);
-    public List<Landlord> getAllLandlords();
+    public List getAllLandlords();
 }

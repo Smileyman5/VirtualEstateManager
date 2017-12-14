@@ -2,12 +2,14 @@ package com.vem.controller.dao.impl;
 
 import com.vem.controller.dao.TaskDao;
 import com.vem.controller.model.Task;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by alex on 12/14/17.
  */
+@Repository
 public class TaskDaoImpl implements TaskDao {
     @Override
     public void add(Task task) {
