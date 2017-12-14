@@ -1,19 +1,41 @@
 package com.vem.controller.model;
 
+import javax.persistence.*;
 import java.sql.Date;
 
 /**
  * Created by alex on 12/13/2017.
  */
+@Entity
 public class Contract {
+    @Id
+    @Column(name = "start_date")
     private Date startDate;
+
+    @Column(name = "end_date")
     private Date endDate;
+
+    @Column(name = "cost")
     private double cost;
+
+    @Column(name = "contract_data")
     private Object contractData;
-    private int landlordId;
-    private int contractorId;
-    private int taskId;
-    private int spaceId;
+
+    @ManyToOne
+    @JoinColumn(name = "landlord_id")
+    private Landlord landlord;
+
+    @ManyToOne
+    @JoinColumn(name = "contractor_id")
+    private Contractor contractor;
+
+    @ManyToOne
+    @JoinColumn(name = "task_id")
+    private Task task;
+
+    @ManyToOne
+    @JoinColumn(name = "rental_id")
+    private Rental rental;
 
     public Date getStartDate() {
         return startDate;
@@ -47,35 +69,35 @@ public class Contract {
         this.contractData = contractData;
     }
 
-    public int getLandlordId() {
-        return landlordId;
+    public Landlord getLandlord() {
+        return landlord;
     }
 
-    public void setLandlordId(int landlordId) {
-        this.landlordId = landlordId;
+    public void setLandlord(Landlord landlord) {
+        this.landlord = landlord;
     }
 
-    public int getContractorId() {
-        return contractorId;
+    public Contractor getContractor() {
+        return contractor;
     }
 
-    public void setContractorId(int contractorId) {
-        this.contractorId = contractorId;
+    public void setContractor(Contractor contractor) {
+        this.contractor = contractor;
     }
 
-    public int getTaskId() {
-        return taskId;
+    public Task getTask() {
+        return task;
     }
 
-    public void setTaskId(int taskId) {
-        this.taskId = taskId;
+    public void setTask(Task task) {
+        this.task = task;
     }
 
-    public int getSpaceId() {
-        return spaceId;
+    public Rental getRental() {
+        return rental;
     }
 
-    public void setSpaceId(int spaceId) {
-        this.spaceId = spaceId;
+    public void setRental(Rental space) {
+        this.rental = rental;
     }
 }

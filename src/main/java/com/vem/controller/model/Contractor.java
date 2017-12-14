@@ -1,13 +1,27 @@
 package com.vem.controller.model;
 
+import javax.persistence.*;
+
 /**
  * Created by alex on 12/13/2017.
  */
+@Entity
 public class Contractor {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "middle_name")
     private String middleName;
+
+    @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "type")
     private String type;
 
     public int getId() {

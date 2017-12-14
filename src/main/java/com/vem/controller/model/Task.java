@@ -4,10 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Created by alex on 12/13/2017.
+ * Created by alex on 12/14/17.
  */
 @Entity
-@Table(name = "rental")
-public class Rental {
-
+@Table(name = "task")
+public class Task {
 }
