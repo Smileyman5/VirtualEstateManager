@@ -1,6 +1,7 @@
 package com.vem.controller.model;
 
 import javax.persistence.*;
+import java.sql.Blob;
 import java.sql.Date;
 
 /**
@@ -19,7 +20,7 @@ public class Contract {
     private double cost;
 
     @Column(name = "contract_data")
-    private Object contractData;
+    private Blob contractData;
 
     @ManyToOne
     @JoinColumn(name = "landlord_id")
@@ -61,11 +62,11 @@ public class Contract {
         this.cost = cost;
     }
 
-    public Object getContractData() {
+    public Blob getContractData() {
         return contractData;
     }
 
-    public void setContractData(Object contractData) {
+    public void setContractData(Blob contractData) {
         this.contractData = contractData;
     }
 
