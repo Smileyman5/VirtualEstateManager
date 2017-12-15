@@ -4,8 +4,6 @@ use estate;
 
 drop table if exists application;
 drop table if exists owner;
-drop table if exists house;
-drop table if exists apartment;
 drop table if exists contract;
 drop table if exists lease;
 drop table if exists rental;
@@ -21,6 +19,10 @@ create table landlord (
    first_name varchar(32) NOT NULL,
    middle_name varchar(32),
    last_name varchar(32) NOT NULL,
+   password varchar(32),
+   username varchar(32),
+   role varchar(32) default 'USER',
+   enabled tinyint(1) default '1',
    primary key (id));
    
 /* contractor */
@@ -48,6 +50,7 @@ create table applicant (
    middle_name varchar(32),
    last_name varchar(32) NOT NULL,
    accepted BIT,
+   job varchar(32),
    primary key (id));
 
 /* task */
@@ -66,7 +69,7 @@ create table rental (
    state varchar(32) NOT NULL,
    primary key (id));
 
-/* lease */
+/* Lease */
 create table lease (
    start_date DATE NOT NULL,
    end_date DATE,
@@ -95,17 +98,6 @@ create table contract (
    foreign key (contractor_id) references contractor(id),
    foreign key (task_id) references task(id),
    foreign key (rental_id) references rental(id));
-
--- /* apartment FIX THIS */
--- create table apartment (
---    id int NOT NULL,
---    apartment_number int NOT NULL,
---    foreign key (id) references rental(id));
-
--- /* house */
--- create table house (
---    id int NOT NULL,
---    foreign key (id) references rental(id));
 
 /* owner */
 create table owner (

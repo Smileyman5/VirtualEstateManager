@@ -1,6 +1,6 @@
 package com.vem.controller;
 
-import com.vem.controller.service.ContractorService;
+import com.vem.controller.dao.ContractorDao;
 import com.vem.welcome.WelcomeController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,11 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class ContractorController {
 
     @Autowired
-    private ContractorService contractorService;
+    private ContractorDao contractorDao;
 
     @RequestMapping(value = "/list-contractors", method = RequestMethod.GET)
     public ModelAndView getAvailableContractors(ModelAndView mv) {
-        mv.addObject("availableContractors", contractorService.getAvailableContractors());
+        mv.addObject("availableContractors", contractorDao.getAllContractors());
         mv.addObject("name", WelcomeController.getLoggedInUserName());
         mv.setViewName("contractors");
 

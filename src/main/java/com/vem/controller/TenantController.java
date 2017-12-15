@@ -1,6 +1,6 @@
 package com.vem.controller;
 
-import com.vem.controller.service.TenantService;
+import com.vem.controller.dao.TenantDao;
 import com.vem.welcome.WelcomeController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,11 +14,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class TenantController {
     @Autowired
-    private TenantService tenantService;
+    private TenantDao tenantDao;
 
     @RequestMapping(value = "/list-tenants", method = RequestMethod.GET)
     public ModelAndView getCurrentTenants(ModelAndView mv) {
-        mv.addObject("currentTenants", tenantService.getCurrentTenants());
+        mv.addObject("currentTenants", tenantDao.getAllTenants());
         mv.addObject("name", WelcomeController.getLoggedInUserName());
         mv.setViewName("tenants");
 

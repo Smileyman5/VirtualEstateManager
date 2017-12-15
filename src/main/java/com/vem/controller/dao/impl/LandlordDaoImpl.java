@@ -2,8 +2,8 @@ package com.vem.controller.dao.impl;
 
 import com.vem.controller.dao.LandlordDao;
 import com.vem.controller.model.Landlord;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,30 +15,35 @@ import java.util.List;
 public class LandlordDaoImpl implements LandlordDao {
 
     @Autowired
-    private SessionFactory session;
+    private JdbcTemplate jdbcTemplate;
+
+    public LandlordDaoImpl() {}
 
     @Override
     public void add(Landlord landlord) {
-        session.getCurrentSession().save(landlord);
+        // insert
+        String sql = "INSERT INTO contract VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, landlord.getLandlordId(), landlord.getFirstName(), landlord.getMiddleName(), landlord.getLastName(),
+                landlord.getSecretPassword(), landlord.getUsername(), landlord.getRole(), landlord.getEnabled());
     }
 
     @Override
     public void edit(Landlord landlord) {
-        session.getCurrentSession().update(landlord);
+
     }
 
     @Override
     public void delete(Landlord landlord) {
-        session.getCurrentSession().delete(landlord);
+
     }
 
     @Override
     public Landlord getLandlord(int landlordId) {
-        return session.getCurrentSession().get(Landlord.class, landlordId);
+        return null;
     }
 
     @Override
     public List getAllLandlords() {
-        return session.getCurrentSession().createQuery("from Landlord").list();
+        return null;
     }
 }

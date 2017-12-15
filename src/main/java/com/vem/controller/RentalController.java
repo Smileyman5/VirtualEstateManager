@@ -1,6 +1,6 @@
 package com.vem.controller;
 
-import com.vem.controller.service.RentalService;
+import com.vem.controller.dao.RentalDao;
 import com.vem.welcome.WelcomeController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,11 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class RentalController {
 
     @Autowired
-    private RentalService rentalService;
+    private RentalDao rentalDao;
 
     @RequestMapping(value = "/list-rentals", method = RequestMethod.GET)
     public ModelAndView getCurrentRentals(ModelAndView mv) {
-        mv.addObject("currentRentals", rentalService.getCurrentRentals());
+        mv.addObject("currentRentals", rentalDao.getAllRentals());
         mv.addObject("name", WelcomeController.getLoggedInUserName());
         mv.setViewName("rentals");
 

@@ -27,6 +27,13 @@ public class Landlord {
 
     @Column(name = "password")
     private int secretPassword;
+    
+    @Column(name = "role")
+    private String role;
+    
+    @Column(name = "enabled")
+    private int enabled;
+    
 
     public int getLandlordId() {
         return landlordId;
@@ -74,5 +81,21 @@ public class Landlord {
 
     public void setSecretPassword(int secretPassword) {
         this.secretPassword = secretPassword;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public int getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(int enabled) {
+        this.enabled = enabled;
     }
 }
